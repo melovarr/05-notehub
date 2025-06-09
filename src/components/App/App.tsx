@@ -62,10 +62,9 @@ export default function App() {
       {/* -------NOTE MODAL--------- */}
 
       {isModalOpen && (
-        <NoteModal
-          onClose={() => setIsModalOpen(false)}
-          children={<NoteForm onClose={() => setIsModalOpen(false)} />}
-        />
+        <NoteModal onClose={() => setIsModalOpen(false)}>
+          <NoteForm onClose={() => setIsModalOpen(false)} />
+        </NoteModal>
       )}
     </div>
   );
