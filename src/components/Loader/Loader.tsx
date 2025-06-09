@@ -1,10 +1,10 @@
 import css from './Loader.module.css';
-import { CircleLoader } from 'react-spinners';
+import { PulseLoader } from 'react-spinners';
 
 export default function Loader() {
   return (
     <div className={css.loader}>
-      <CircleLoader color="blue" />
+      <PulseLoader color="#dc3545" />
     </div>
   );
 }
