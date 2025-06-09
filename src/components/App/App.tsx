@@ -16,7 +16,6 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  //FETCHING & SEARCHING NOTES
   const [debounseInputValue] = useDebounce(inputValue, 500);
 
   const notes = useQuery({
@@ -34,11 +33,7 @@ export default function App() {
 
   return (
     <div className={css.app}>
-      {/* -------LOADER--------- */}
-
       {notes.isLoading && <Loader />}
-
-      {/* -------HEADER ELEMENTS--------- */}
 
       <header className={css.toolbar}>
         <SearchBox value={inputValue} onSearch={handleSearchChange} />
@@ -54,12 +49,8 @@ export default function App() {
         </button>
       </header>
 
-      {/* -------NOTELIST--------- */}
-
       <NoteList notes={notes.data?.notes ?? []} />
       {notes.isError && <ErrorMessage />}
-
-      {/* -------NOTE MODAL--------- */}
 
       {isModalOpen && (
         <NoteModal onClose={() => setIsModalOpen(false)}>

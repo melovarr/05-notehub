@@ -20,8 +20,6 @@ export default function NoteForm({ onClose }: NoteFormProps) {
   const fieldId = useId();
   const queryClient = useQueryClient();
 
-  //SENDING FORM ON SUBMIT
-
   const handleSubmit = (
     values: NewNoteData,
     actions: FormikHelpers<NewNoteData>
@@ -30,8 +28,6 @@ export default function NoteForm({ onClose }: NoteFormProps) {
     actions.resetForm();
   };
 
-  //SENDING
-
   const { mutate } = useMutation({
     mutationFn: (values: NewNoteData) => createNote(values),
     onSuccess: () => {
@@ -39,8 +35,6 @@ export default function NoteForm({ onClose }: NoteFormProps) {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
     },
   });
-
-  //VALIDATION WITH YUP
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
@@ -62,8 +56,6 @@ export default function NoteForm({ onClose }: NoteFormProps) {
       onSubmit={handleSubmit}
     >
       <Form className={css.form}>
-        {/* -----Title input field----- */}
-
         <div className={css.formGroup}>
           <label htmlFor={`${fieldId}-title`}>Title</label>
           <Field
@@ -74,8 +66,6 @@ export default function NoteForm({ onClose }: NoteFormProps) {
           />
           <ErrorMessage name="title" component="span" className={css.error} />
         </div>
-
-        {/* -----Content textarea field----- */}
 
         <div className={css.formGroup}>
           <label htmlFor={`${fieldId}-content`}>Content</label>
@@ -88,8 +78,6 @@ export default function NoteForm({ onClose }: NoteFormProps) {
           />
           <ErrorMessage name="content" component="span" className={css.error} />
         </div>
-
-        {/* -----Select tag field----- */}
 
         <div className={css.formGroup}>
           <label htmlFor={`${fieldId}-tag`}>Tag</label>
@@ -107,8 +95,6 @@ export default function NoteForm({ onClose }: NoteFormProps) {
           </Field>
           <ErrorMessage name="tag" component="span" className={css.error} />
         </div>
-
-        {/* -----Action buttons----- */}
 
         <div>
           <button onClick={onClose} type="button" className={css.cancelButton}>

@@ -20,18 +20,3 @@ export default function SearchBox({ value, onSearch }: SearchBoxProps) {
     />
   );
 }
-
-// export default function SearchBox({ value, onSearch }: SearchBoxProps) {
-//   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     onSearch(event.target.value);
-//   };
-
-//   return (
-//     <input
-//       type="text"
-//       className={css.searchInput}
-//       value={value}
-//       onChange={handleChange}
-//     />
-//   );
-// }

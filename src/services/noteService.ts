@@ -19,7 +19,6 @@ interface FetchNotesParams {
   perPage?: number;
 }
 
-//AXIOS DEFAULTS
 const axiosInstance = axios.create({
   baseURL: 'https://notehub-public.goit.study/api',
   headers: {
@@ -27,7 +26,6 @@ const axiosInstance = axios.create({
   },
 });
 
-//GET
 export async function fetchNotes(
   query: string,
   page: number
@@ -44,41 +42,12 @@ export async function fetchNotes(
   return response.data;
 }
 
-//POST
 export async function createNote(newNote: NewNoteData): Promise<Note> {
   const response = await axiosInstance.post<Note>('/notes', newNote);
   return response.data;
 }
 
-//DELETE
 export async function deleteNote(noteId: number): Promise<Note> {
   const response = await axiosInstance.delete<Note>(`/notes/${noteId}`);
   return response.data;
 }
-
-// interface NotesHttpResponse {
-//   results: Note[];
-
-// }
-
-// export const getNotes = async (searchQuery: string) => {
-//   const res = await axios.get<NotesHttpResponse>('/notes', {
-//     headers: { Authorization: `Bearer ${myKey}` },
-//   });
-//   return res.data;
-// };
-
-// export const deleteNote = async (noteId: string) => {
-//   const res = await axios.delete(`/tasks/${noteId}`);
-//   return res.data;
-// };
-
-// export const addNote = async (noteData: NewNoteData) => {
-//   const res = await axios.post<Note>('/notes', noteData);
-//   return res.data;
-// };
-
-// export const updateNote = async (updatedNote: NoteUpdateData) => {
-//   const res = await axios.put<Note>(`/notes/${updatedNote.id}`, updatedNote);
-//   return res.data;
-// };
