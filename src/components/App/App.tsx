@@ -16,11 +16,11 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const [debounseInputValue] = useDebounce(inputValue, 500);
+  const [debounsedInputValue] = useDebounce(inputValue, 500);
 
   const notes = useQuery({
-    queryKey: ['notes', debounseInputValue, currentPage],
-    queryFn: () => fetchNotes(debounseInputValue, currentPage),
+    queryKey: ['notes', debounsedInputValue, currentPage],
+    queryFn: () => fetchNotes(debounsedInputValue, currentPage),
     placeholderData: keepPreviousData,
   });
 
