@@ -26,7 +26,7 @@ export default function App() {
 
   const totalPages = notes.data?.totalPages ?? 0;
 
-  const handleSearchChange = (newSearch: string) => {
+  const handleSearchChange = (newSearch: string): void => {
     setInputValue(newSearch);
     setCurrentPage(1);
   };
